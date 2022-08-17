@@ -3,7 +3,7 @@ import { IGerne } from "./gerne";
 import { IPublisher } from "./publisher";
 
 
-interface IBook {
+export interface IBook {
     name?: string;
     author?: string;
     yearOfPublish?: number;
@@ -14,8 +14,6 @@ interface IBook {
     gerne?:IGerne;
     price?:number;
     publisher?:IPublisher
-
-
 }
 
 const bookSchema = new Schema<IBook>({
