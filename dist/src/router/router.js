@@ -1,2 +1,11 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.router = void 0;
+const express_1 = require("express");
+const gerne_route_1 = require("./gerne-route");
+const publisher_route_1 = require("./publisher-route");
+const book_route_1 = require("./book-route");
+exports.router = (0, express_1.Router)();
+exports.router.use('/gerne', gerne_route_1.gerneRoute);
+exports.router.use('/publisher', publisher_route_1.publisherRoute);
+exports.router.use('/book', book_route_1.bookRoute);
