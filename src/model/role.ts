@@ -3,9 +3,9 @@ import { Schema, model } from "mongoose";
 export interface IRole {
     name : string;
 }
-
 const roleSchema = new Schema<IRole>({
-    name: String
+    name: String,
+   
 });
 
 const Role = model<IRole>('role', roleSchema);
