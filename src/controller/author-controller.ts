@@ -4,6 +4,7 @@ import { Request, Response } from "express";
 class AuthorController{
     getAll = async (req: Request, res : Response) =>{
         let authors = await Author.find();
+
         res.status(200).json(authors);
     }
     addAuthor = async(req: Request, res: Response)=>{
@@ -40,6 +41,17 @@ class AuthorController{
             let newAuthor = await Author.findByIdAndUpdate({_id:id}, data);
             res.status(200).json(newAuthor);
         }
+    }
+    searchAuthor = async(req:Request, res: Response)=>{
+        
+       let query = req.query.name;
+       let author = await Author.find({name:query});
+       if(!author) {
+            res.status(404).json();
+       }
+       else {
+           res.status(200).json(author)
+       }
     }
 }
 

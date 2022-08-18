@@ -15,6 +15,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const bcrypt_1 = __importDefault(require("bcrypt"));
 const user_1 = require("../model/user");
 const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
+const auth_middleware_1 = require("../middleware/auth-middleware");
 class AuthController {
     constructor() {
         this.register = (req, res) => __awaiter(this, void 0, void 0, function* () {
@@ -46,12 +47,12 @@ class AuthController {
                         let payload = {
                             username: user.username
                         };
-                        let secretKey = '190896';
-                        let token = yield jsonwebtoken_1.default.sign(payload, secretKey, {
+                        let token = yield jsonwebtoken_1.default.sign(payload, auth_middleware_1.SECRET_KEY, {
                             expiresIn: 36000
                         });
                         res.status(200).json({
-                            token: token
+                            token: token,
+                            user: user.username
                         });
                     }
                 }

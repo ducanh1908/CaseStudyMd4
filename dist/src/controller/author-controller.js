@@ -51,6 +51,16 @@ class AuthorController {
                 res.status(200).json(newAuthor);
             }
         });
+        this.searchAuthor = (req, res) => __awaiter(this, void 0, void 0, function* () {
+            let query = req.query.name;
+            let author = yield author_1.Author.find({ name: query });
+            if (!author) {
+                res.status(404).json();
+            }
+            else {
+                res.status(200).json(author);
+            }
+        });
     }
 }
 exports.default = new AuthorController();
