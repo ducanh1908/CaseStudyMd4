@@ -18,7 +18,7 @@ app.use(bodyParser.json());
 app.use('',router)
 // app.get('/login', userController.showForm)
 // app.post('/login', userController.loginUser)
-mongoose.connect('mongodb://localhost:27017/book_management').then(() => {
+mongoose.connect('mongodb+srv://admin:admin123@cluster0.ndyjwui.mongodb.net/Book-Management').then(() => {
     console.log('Connect success!')
 }).catch(e => {
     console.log(e);

@@ -15,7 +15,7 @@ const app = (0, express_1.default)();
 app.use((0, cors_1.default)());
 app.use(body_parser_1.default.json());
 app.use('', route_1.router);
-mongoose_1.default.connect('mongodb://localhost:27017/book_management').then(() => {
+mongoose_1.default.connect('mongodb+srv://admin:admin123@cluster0.ndyjwui.mongodb.net/Book-Management').then(() => {
     console.log('Connect success!');
 }).catch(e => {
     console.log(e);

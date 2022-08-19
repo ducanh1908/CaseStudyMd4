@@ -16,7 +16,7 @@ class UserController {
     async Register(req, res) {
         let user = req.body;
         user.password = await bcrypt_1.default.hash(user.password, 10);
-        user.role = '62feebc1d84698b97faab0d6';
+        user.role = '62ff4e565e0a6d6a9ace0ea8';
         let allUser = await user_1.User.findOne({
             username: user.username
         });
