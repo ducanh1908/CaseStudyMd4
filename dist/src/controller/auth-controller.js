@@ -20,16 +20,27 @@ class AuthController {
     constructor() {
         this.register = (req, res) => __awaiter(this, void 0, void 0, function* () {
             let user = req.body;
-            user.password = yield bcrypt_1.default.hash(user.password, 10);
-            user = yield user_1.User.create(user);
-            // let newUser = await User.findById(user._id).populate('role','name')
-            res.status(201).json(user);
+            user.role = [];
+            let role = '62ff4e565e0a6d6a9ace0ea8';
+            user.role.push(role);
+            let checkUser = yield user_1.User.findOne({ username: user.username });
+            if (!checkUser) {
+                user.password = yield bcrypt_1.default.hash(user.password, 10);
+                user = yield user_1.User.create(user);
+                res.status(201).json(user);
+            }
+            else {
+                res.status(404).json({
+                    err: "User exited"
+                });
+            }
         });
         this.login = (req, res) => __awaiter(this, void 0, void 0, function* () {
             let loginForm = req.body;
             let user = yield user_1.User.findOne({
                 username: loginForm.username
-            });
+            }).populate('role', 'name');
+            console.log(user);
             if (!user) {
                 res.status(404).json({
                     message: 'Username is not existed'
@@ -45,14 +56,15 @@ class AuthController {
                     }
                     else {
                         let payload = {
-                            username: user.username
+                            username: user.username,
+                            role: user.role
                         };
                         let token = yield jsonwebtoken_1.default.sign(payload, auth_middleware_1.SECRET_KEY, {
                             expiresIn: 36000
                         });
                         res.status(200).json({
                             token: token,
-                            user: user.username
+                            role: user.role
                         });
                     }
                 }

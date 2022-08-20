@@ -6,9 +6,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.authorRouter = void 0;
 const author_controller_1 = __importDefault(require("../controller/author-controller"));
 const express_1 = require("express");
-const auth_middleware_1 = require("../middleware/auth-middleware");
 exports.authorRouter = (0, express_1.Router)();
-exports.authorRouter.use(auth_middleware_1.auth);
+// authorRouter.use(auth)
 exports.authorRouter.get('', author_controller_1.default.getAll);
 exports.authorRouter.post('', author_controller_1.default.addAuthor);
 exports.authorRouter.delete('/:id', author_controller_1.default.deleteAuthor);

@@ -3,17 +3,18 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.Order = void 0;
 const mongoose_1 = require("mongoose");
 const orderSchema = new mongoose_1.Schema({
-    books: [{
-            type: mongoose_1.Schema.Types.ObjectId,
-            ref: 'Book'
-        }],
-    quantity: Number,
-    price: {
-        type: Number,
-        required: true
+    user: {
+        type: mongoose_1.Schema.Types.ObjectId,
+        ref: 'User',
     },
-}, {
-    timestamps: true
+    order: [{
+            type: mongoose_1.Schema.Types.ObjectId,
+            ref: 'Order',
+        }],
+    subtotal: {
+        default: 0,
+        type: Number
+    }
 });
-const Order = (0, mongoose_1.model)('order', orderSchema);
+const Order = (0, mongoose_1.model)('cart', orderSchema);
 exports.Order = Order;

@@ -12,7 +12,7 @@ const router_1 = require("./src/router/router");
 dotenv_1.default.config();
 const PORT = 3000;
 const app = (0, express_1.default)();
-const DB_LOCALHOST = 'mongodb://localhost:27017/book_management';
+const DB_LOCALHOST = 'mongodb+srv://admin:admin123@cluster0.ndyjwui.mongodb.net/Book-Management';
 mongoose_1.default.connect(`${DB_LOCALHOST}`).then(() => {
     console.log('DB connect success !');
 })

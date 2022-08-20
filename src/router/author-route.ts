@@ -3,7 +3,7 @@ import { Router } from "express";
 import { auth } from "../middleware/auth-middleware";
 
 export const authorRouter = Router();
-authorRouter.use(auth)
+// authorRouter.use(auth)
 authorRouter.get('',AuthorController.getAll);
 authorRouter.post('', AuthorController.addAuthor);
 authorRouter.delete('/:id',AuthorController.deleteAuthor);
