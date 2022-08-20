@@ -1,23 +1,34 @@
-import { Schema, model } from "mongoose";
+import { Schema,model } from "mongoose";
+import { IBook } from "./book";
 import { IOrder } from "./order";
 import { IUser } from "./user";
+
 export interface ICart {
-    user : IUser;
-    order : IOrder;
-    total : number;
+    user: IUser;
+    orders : IOrder;
+    subtotal: number;
+    status: string;
 }
-
 const cartSchema = new Schema<ICart>({
-    user : {
+    user :  {
         type: Schema.Types.ObjectId,
-        ref : 'User',
+        ref :'User'
     },
-    order : {
-        type : Schema.Types.ObjectId,
-        ref :'Order',
+    orders: [{
+        type: Schema.Types.ObjectId,
+        ref :'Order'
+    }],
+    
+    subtotal : {
+        type: Number,
+        default:0,
+        required: true,
     },
-    total : Number,
-});
-const Cart = model<ICart>('cart', cartSchema);
+    status: String
+},
+{timestamps: true},
 
-export {Cart};
+)
+
+const Cart = model<ICart>('cart', cartSchema);
+export {Cart}

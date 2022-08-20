@@ -9,7 +9,7 @@ const PORT = 3000;
 
 const app = express();
 
-const DB_LOCALHOST = 'mongodb://localhost:27017/book_management';
+const DB_LOCALHOST = 'mongodb+srv://admin:admin123@cluster0.ndyjwui.mongodb.net/Book-Management';
 mongoose.connect(`${DB_LOCALHOST}`).then(()=>{
     console.log('DB connect success !');
 })

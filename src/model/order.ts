@@ -1,21 +1,30 @@
-import { Schema,model } from "mongoose";
-import { IBook } from "./book";
+import { Schema, model } from "mongoose";
 
+
+import { IBook } from "./book";
 export interface IOrder {
-    book : IBook;
+    books: IBook;
     quantity : number;
     price : number;
-    total: number;
+   
 }
 const orderSchema = new Schema<IOrder>({
-    book: {
+    books: [{
         type: Schema.Types.ObjectId,
         ref :'Book'
-    },
+    }],
     quantity : Number,
-    price : Number,
-    total : Number
-})
+    price : {
+        type: Number,
+        required: true
+    },
+
+},
+{
+    timestamps: true
+}
+)
+
 
 const Order = model<IOrder>('order', orderSchema);
 export {Order}
