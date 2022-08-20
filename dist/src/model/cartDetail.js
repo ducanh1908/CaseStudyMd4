@@ -5,11 +5,11 @@ const mongoose_1 = require("mongoose");
 const cartDetailSchema = new mongoose_1.Schema({
     user: {
         type: mongoose_1.Schema.Types.ObjectId,
-        ref: 'User'
+        ref: 'user'
     },
     book: {
         type: mongoose_1.Schema.Types.ObjectId,
-        ref: 'Book'
+        ref: 'book'
     },
     quantity: Number
 });

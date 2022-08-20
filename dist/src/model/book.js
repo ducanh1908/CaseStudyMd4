@@ -4,7 +4,7 @@ exports.Book = void 0;
 const mongoose_1 = require("mongoose");
 const bookSchema = new mongoose_1.Schema({
     name: String,
-    author: String,
+    publisher: String,
     yearOfPublish: Number,
     reprint: Number,
     ISBN: Number,
@@ -12,11 +12,11 @@ const bookSchema = new mongoose_1.Schema({
     image: String,
     gerne: {
         type: mongoose_1.Schema.Types.ObjectId,
-        ref: 'Gerne'
+        ref: 'gerne'
     },
-    publisher: {
+    author: {
         type: mongoose_1.Schema.Types.ObjectId,
-        ref: 'Publisher'
+        ref: 'author'
     },
     price: String
 });

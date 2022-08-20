@@ -1,24 +1,24 @@
 import { model, Schema } from 'mongoose';
 import { IGerne } from "./gerne";
-import { IPublisher } from "./publisher";
+import {IAuthor} from "./author"
 
 
 export interface IBook {
     name?: string;
-    author?: string;
+    author?: IAuthor
     yearOfPublish?: number;
     reprint?: number;
     ISBN?: number;
     description?: string;
     image?: string;
-    gerne?:IGerne;
+    gerne?:IGerne
     price?:number;
-    publisher?:IPublisher
+    publisher?:string
 }
 
 const bookSchema = new Schema<IBook>({
     name: String,
-    author: String,
+    publisher: String,
     yearOfPublish: Number,
     reprint: Number,
     ISBN: Number,
@@ -26,11 +26,11 @@ const bookSchema = new Schema<IBook>({
     image: String,
     gerne:{
         type:Schema.Types.ObjectId,
-        ref:'Gerne'
+        ref:'gerne'
     },
-    publisher:{
+    author:{
       type:Schema.Types.ObjectId,
-      ref:'Publisher'
+      ref:'author'
     },
     price:String
 })

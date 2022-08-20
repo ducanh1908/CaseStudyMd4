@@ -39,7 +39,7 @@ class AuthController {
             let loginForm = req.body;
             let user = yield user_1.User.findOne({
                 username: loginForm.username
-            }).populate('role', 'name');
+            });
             console.log(user);
             if (!user) {
                 res.status(404).json({

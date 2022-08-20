@@ -1,4 +1,7 @@
 "use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.router = void 0;
 const express_1 = require("express");
@@ -7,9 +10,13 @@ const publisher_route_1 = require("./publisher-route");
 const book_route_1 = require("./book-route");
 const author_route_1 = require("./author-route");
 const auth_route_1 = require("./auth-route");
+const role_controller_1 = __importDefault(require("../controller/role-controller"));
+const cartdetail_route_1 = require("./cartdetail-route");
 exports.router = (0, express_1.Router)();
 exports.router.use('/gernes', gerne_route_1.gerneRoute);
 exports.router.use('/publishers', publisher_route_1.publisherRoute);
 exports.router.use('/books', book_route_1.bookRoute);
 exports.router.use('/authors', author_route_1.authorRouter);
+exports.router.use('/roles', role_controller_1.default.getAll);
 exports.router.use('', auth_route_1.authRoute);
+exports.router.use('/cartdetails', cartdetail_route_1.cartdetailRoute);

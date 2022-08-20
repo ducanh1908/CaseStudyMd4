@@ -29,7 +29,8 @@ class AuthController {
         let loginForm = req.body;  
         let user = await User.findOne({
             username: loginForm.username   
-        }).populate('role','name');
+        });
+
         console.log(user);
         if(!user) {
             res.status(404).json({
